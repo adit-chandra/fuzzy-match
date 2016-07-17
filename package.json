@@ -1,0 +1,18 @@
+{
+  "name": "movie_request_receiver",
+  "version": "0.0.1",
+  "description": "Backend Interface for movie requests",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Neil Acharya <nacharya114@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.4.2",
+    "express": "^4.13.4",
+    "request": "^2.73.0",
+    "body-parser": "^1.9.2",
+    "curlrequest": "^0.5.7"
+  }
+}

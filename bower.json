@@ -1,0 +1,17 @@
+{
+  "name": "movie_request_receiver",
+  "description": "Backend Interface for movie requests",
+  "main": "server.js",
+  "authors": [
+    "Neil Acharya <nacharya114@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "/localhost:3000/",
+  "dependencies": {
+    "angular": "^1.5.6",
+    "bootstrap": "^3.3.6"
+  },
+  "install": {
+    "path": "client/libs"
+  }
+}
