@@ -1,4 +1,7 @@
-var notifs = JSON.parse(localStorage.getItem("notifs"));
+var notif_clr = localStorage('notif_clr', notif_clr);
+var notif_state = localStorage('notif_state', notif_state);
+var notif_contacts = localStorage('notif_contacts', JSON.parse(notif_contacts));
+
 writeNotifs();
 
 var conversation;
@@ -79,17 +82,17 @@ function updateNotifs(toSleep) {
     var state_clr = '#0000ff';
   }
   $('#notifications').empty();
-  //clear local storaged notifs
-  notifs = [];
-  localStorage.setItem("notifs", JSON.stringify(notifs));
+  //reset local storaged notifs
+  localStorage.setItem('notif_clr', notif_clr);
+  localStorage.setItem('notif_state', state_cur);
+  notif_contacts = [];
+  localStorage.setItem("notif_contacts", JSON.stringify(notif_contacts));
   for (var i = 0; i < contacts.length; i++) {
-    var notif = {contact : contacts_name[i], state: state_cur, clr : state_clr};
-    console.log(notif);
-    notifs[i] = notif;
-    console.log(notifs);
+    notif_contacts[i] = contacts_name[i];
+    console.log(notif_contacts);
   }
   //load new local stored notifs
-  localStorage.setItem("notifs", JSON.stringify(notifs));
+  localStorage.setItem("notif_contacts", JSON.stringify(notif_contacts));
 }
 
 function writeNotifs() {
