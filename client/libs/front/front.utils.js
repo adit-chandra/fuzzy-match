@@ -5,20 +5,21 @@ var conversation;
 
 var contacts = [];
 var contacts_name = [];
+var user_handle = [];
 
 Front.on('conversation', function (data) {
     conversation = data.conversation;
+    console.log(conversation);
     if (!(contacts.indexOf(conversation.id) > -1)) {
         contacts.push(conversation.id);
         contacts_name.push(conversation.contact.name);
+
     }
     updateTable();
 })
 
 
 function set_user_sleep() {
-  var msg = $("#txtbox").val();
-
   for (var ind = 0; ind < contacts.length; ind++){
       $.ajax({
         method: 'GET',
