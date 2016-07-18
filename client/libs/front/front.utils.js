@@ -39,7 +39,7 @@ function set_user_sleep() {
   for (var ind = 0; ind < user_handles.length; ind++){
       $.ajax({
         method: 'GET',
-        url: '/sleep/' + user_handles[ind] + '/',
+        url: 'https://smooch-user-sleep.herokuapp.com/sleep/' + user_handles[ind] + '/',
         success: function(data) {
         }
       });
@@ -54,7 +54,7 @@ function set_user_wake() {
   for (var ind = 0; ind < user_handles.length; ind++){
       $.ajax({
         method: 'GET',
-        url: '/wake/' + user_handles[ind] + '/',
+        url: 'https://smooch-user-sleep.herokuapp.com/wake/' + user_handles[ind] + '/',
         success: function(data) {
         }
       });
