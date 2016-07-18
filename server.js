@@ -46,7 +46,7 @@ function user_sleep(userId) {
       'app-token' : smooch_app_token
     },
     dataType: 'json',
-    data: JSON.stringify(state_stop);
+    data: JSON.stringify(state_stop)
   }, function(error, response, body){
     console.log('ERROR?: ');
     console.log(error);
