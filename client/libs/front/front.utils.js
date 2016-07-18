@@ -5,7 +5,7 @@ var conversation;
 
 var contacts = [];
 var contacts_name = [];
-var user_handle = [];
+var user_handles = [];
 
 Front.on('conversation', function (data) {
     conversation = data.conversation;
@@ -13,17 +13,17 @@ Front.on('conversation', function (data) {
     if (!(contacts.indexOf(conversation.id) > -1)) {
         contacts.push(conversation.id);
         contacts_name.push(conversation.contact.name);
-
+        user_handles.push(conversation.contact.handle);
     }
     updateTable();
 })
 
 
 function set_user_sleep() {
-  for (var ind = 0; ind < contacts.length; ind++){
+  for (var ind = 0; ind < user_handles.length; ind++){
       $.ajax({
         method: 'GET',
-        url: '/sleep/' + contacts[ind] + '/',
+        url: '/sleep/' + user_handles[ind] + '/',
         success: function(data) {
           console.log(data);
         }

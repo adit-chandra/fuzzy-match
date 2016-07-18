@@ -37,28 +37,30 @@ app.get('/', function(req, res){
     res.render("index");
 });
 
-//cnv_22yuim
-function user_sleep(smoochId, user_props) {
+function user_sleep(userId) {
+  var user_props =  {'state' : 'stop'};
   request({
     method: 'PUT',
-    url: smooch_uri + smoochId,
+    url: smooch_uri + userId,
     headers: {
       'app-token' : smooch_app_token
     },
     dataType: 'json',
     data: user_props
   }, function(error, response, body){
+    console.log('SMOOCH PUT REQUEST BODY RETURNED: ');
+    console.log(body);
     return body;
   });
 }
 
 // set users to sleep
-app.get('/sleep/:id', function(req, res){
-  var id = req.params.id;
-  var props =   {'state' : 'stop'};
-  var resp = user_sleep(id, props);
+app.get('/sleep/:userId', function(req, res){
+  var userId = req.params.userId;
+  var resp = user_sleep(userId);
+  console.log('RESPONSE FROM user_sleep CALL: ');
   console.log(resp);
-  res.send('recieve sleep call!');
+  res.send('recieved sleep call!');
 });
 
 
