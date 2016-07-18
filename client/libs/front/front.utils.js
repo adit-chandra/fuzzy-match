@@ -96,10 +96,10 @@ function updateNotifs(toSleep) {
 }
 
 function writeNotifs() {
-  if(notifs != null) {
-    for (var i = 0; i < notifs.length; i++) {
-      if (notifs[i].name != null && notifs[i].state != null && notifs[i].clr != null){
-        $('#notifications').append($('<p style="color: #525252">' + notifs[i].name  + ' set to <span style="color: ' + notifs[i].clr + '">' + notifs[i].state + '</span>' + '.</p>'));
+  if(notif_clr != null && notif_state != null && notif_contacts != null) {
+    for (var i = 0; i < notif_contacts.length; i++) {
+      if (notif_contacts[i] != null){
+        $('#notifications').append($('<p style="color: #525252">' + notif_contacts[i]  + ' set to <span style="color: ' + notif_clr + '">' + notif_state + '</span>' + '.</p>'));
       }
     }
   }
