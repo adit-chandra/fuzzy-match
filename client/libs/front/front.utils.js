@@ -26,6 +26,10 @@ function get_input() {
   }
 }
 
+function clear_input() {
+  $("#txtbox").val('');
+}
+
 function set_user_sleep() {
   get_input();
   for (var ind = 0; ind < user_handles.length; ind++){
@@ -33,7 +37,7 @@ function set_user_sleep() {
         method: 'GET',
         url: '/sleep/' + user_handles[ind] + '/',
         success: function(data) {
-
+          clear_input();
         }
       });
   }
