@@ -1,7 +1,6 @@
 var express = require('express');
 var request = require('request');
 var bodyParser = require('body-parser');
-var curl = require('curlrequest');
 
 var app = express();
 
@@ -32,63 +31,27 @@ app.get('/', function(req, res){
     res.render("index");
 });
 
-app.get('/reply/:contact_id/:msg', function(req, res) {
-  var contact_id = req.params.contact_id;
-  var msg = req.params.msg;
-  var body = {
-              'body': msg,
-              'text': msg,
-              'options': {
-                'tags': [],
-                'archive': true
-              },
-              'to': [],
-              'cc': [],
-              'bcc': []
-            }
-
-  var options = {
-                  url: 'https://api2.frontapp.com/conversations/' + contact_id + '/messages',
-                  headers: {'Authorization': authorization},
-                  include: true,
-                  data: {
-                    'body': msg,
-                    'text': msg,
-                    'options': {
-                      'tags': [],
-                      'archive': true
-                    },
-                    'to': [],
-                    'cc': [],
-                    'bcc': []
-                  }
-                };
-  curl.request(options, function (err, parts) {
-      parts = parts.split('\r\n');
-      var data = parts.pop()
-        , head = parts.pop();
-      res.setHeader('Content-Type', 'application/json');
-      console.log(data);
-      res.send(data);
+function user_sleep(smoochId) {
+  var user_props = {'state' : 'stop'};
+  request({
+    method: 'PUT',
+    url: smooch_uri + smoochId,
+    headers: {
+      'app-token' : smooch_app_token
+    },
+    dataType: 'json',
+    data: user_props
+  }, function(error, response, body){
+    return body;
   });
+}
 
-  // var body = req.body;
-  // console.log('BODY IS HERE' + body);
-  // var url_str = 'https://api2.frontapp.com/conversations/' + contact_id + '/messages';
-  // request({
-  //   url: url_str,
-  //   method: "POST",
-  //   headers: {
-  //     'Authorization': authorization
-  //   },
-  //   dataType: 'json',
-  //   data: body,
-  // }, function(err, resp, body) {
-  //   console.log('BODY' + body);
-  //   console.log('RESP' + resp);
-  //   res.send(resp);
-  // });
-})
+// set users to sleep
+app.get('/sleep/:id', function(req, res){
+  var id = req.params.id;
+  res.send(user_sleep(id));
+});
+
 
 app.listen(port, function(){
     console.log("Server running on port " + port + "...");
