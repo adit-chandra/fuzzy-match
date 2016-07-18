@@ -56,10 +56,10 @@ function set_user_wake() {
 }
 
 function removeFrom(id) {
-    // console.log(contacts_name[contacts_name.indexOf(contacts_name[id])]);
-    // console.log(contacts[contacts.indexOf(contacts[id])]);
-    contacts.splice(id, 1);
-    contacts_name.splice(id, 1);
+    console.log(contacts_name[contacts_name.indexOf(contacts_name[id])]);
+    console.log(contacts[contacts.indexOf(contacts[id])]);
+    contacts.splice(contacts.indexOf(contacts[id]), 1);
+    contacts_name.splice(contacts_name.indexOf(contacts_name[id]), 1);
     updateTable();
     return false;
 }
