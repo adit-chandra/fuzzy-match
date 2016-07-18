@@ -31,10 +31,12 @@ function set_user_sleep() {
         method: 'GET',
         url: '/sleep/' + user_handles[ind] + '/',
         success: function(data) {
-          updateNotifs(true);
+
         }
       });
   }
+  updateNotifs(false);
+  console.log('update notifs called!');
   return false;
 }
 
@@ -45,10 +47,12 @@ function set_user_wake() {
         method: 'GET',
         url: '/wake/' + user_handles[ind] + '/',
         success: function(data) {
-          updateNotifs(false);
+
         }
       });
   }
+  updateNotifs(false);
+  console.log('update notifs called!');
   return false;
 }
 
@@ -63,10 +67,10 @@ function removeFrom(id) {
 
 function updateNotifs(toSleep) {
   if (isSleep) {
-    var state_cur = 'Sleep.';
+    var state_cur = 'Sleep';
     var state_clr = '#ff0000';
   } else {
-    var state_cur = 'Wake.';
+    var state_cur = 'Wake';
     var state_clr = '#0000ff';
   }
   $('#notifications').empty();
@@ -74,7 +78,6 @@ function updateNotifs(toSleep) {
     var notif = contacts_name[i] + 'set to ';
     $('#notifications').append($('<p style="color: #525252">' + notif + '<span style="color: ' + state_clr + '">' + state_cur + '</span>' + '.</p>'))
   }
-  emptyContacts();
 }
 
 function updateTable() {
