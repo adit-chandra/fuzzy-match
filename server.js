@@ -16,8 +16,8 @@ var port = process.env.PORT || 3000
 const front_uri = 'https://api2.frontapp.com/contacts';
 const front_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzY29wZXMiOlsiKiJdLCJpc3MiOiJmcm9udCIsInN1YiI6ImFuZGNoaWxsX2lvIn0.mlpoMLQSuCBw49ZwZY4fqcgqwTAUPZhwKYs98Tj0FPw';
 const smooch_uri = 'https://api.smooch.io/v1/appusers/';
-const smooch_app_token = 'at8jc982yoiaa8qb6d59z9xrl';
-
+// const smooch_app_token = 'at8jc982yoiaa8qb6d59z9xrl';
+const smooch_app_token = '0kntojv4o8o48nq92p1w9g3by'; //temp token
 app.set('view engine', 'ejs');
 app.set('views', path.resolve(__dirname,"client", "views"));
 
