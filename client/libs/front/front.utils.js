@@ -70,7 +70,7 @@ function updateNotifs(toSleep) {
     var state_clr = '#0000ff';
   }
   $('#notifications').empty();
-  for (int i = 0; i < contacts.length; i++) {
+  for (var i = 0; i < contacts.length; i++) {
     var notif = contacts_name[i] + 'set to ';
     $('#notifications').append($('<p style="color: #525252">' + notif + '<span style="color: ' + state_clr + '">' + state_cur + '</span>' + '.</p>'))
   }
