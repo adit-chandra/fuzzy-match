@@ -42,7 +42,7 @@ function user_sleep(userId, toSleep) {
   if(toSleep) {
     var state = {'properties': {'state':'stop'}};
   } else {
-    var state = {'properties': {'state':'start'}};
+    var state = {'properties': {'state':'webhook'}};
   }
   request({
     method: 'PUT',
