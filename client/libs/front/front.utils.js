@@ -79,7 +79,7 @@ function updateNotifs(toSleep) {
     var state_clr = '#0000ff';
   }
   $('#notifications').empty();
-  notifs.length = [];
+  notifs = [];
   sessionStorage.setItem("notifs", notifs);
   for (var i = 0; i < contacts.length; i++) {
     var notif = {contact : contacts_name[i], state: state_cur, clr : state_clr};
