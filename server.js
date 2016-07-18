@@ -38,7 +38,8 @@ app.get('/', function(req, res){
 });
 
 function user_sleep(userId) {
-  var state_stop = '{"properties": "{\"state\": \"stop\"}"}';
+  var state_stop = '{"properties":"{\"state\":\"stop\"}"}'
+;
   request({
     method: 'PUT',
     url: smooch_uri + userId,
@@ -48,6 +49,10 @@ function user_sleep(userId) {
     dataType: 'json',
     data: state_stop
   }, function(error, response, body){
+    console.log('ERROR? :');
+    console.log(error);
+    console.log('RESPONSE?:');
+    console.log(response);
     console.log('SMOOCH PUT REQUEST RETURNED BODY: ');
     console.log(body);
     return body;
@@ -59,7 +64,6 @@ app.get('/sleep/:userId', function(req, res){
   var userId = req.params.userId;
   var resp = user_sleep(userId);
   console.log('RESPONSE FROM user_sleep CALL: ');
-  console.log(resp);
   res.send('recieved sleep call!');
 });
 
