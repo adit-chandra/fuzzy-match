@@ -88,8 +88,10 @@ function updateNotifs(toSleep) {
 }
 
 function writeNotifs() {
-  for (var i = 0; i < notifs.length; i++) {
-    $('#notifications').append(notifs[i]);
+  if(notifs) {
+    for (var i = 0; i < notifs.length; i++) {
+      $('#notifications').append(notifs[i]);
+    }
   }
 }
 
