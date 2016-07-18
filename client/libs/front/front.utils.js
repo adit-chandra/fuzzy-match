@@ -66,7 +66,7 @@ function removeFrom(id) {
 }
 
 function updateNotifs(toSleep) {
-  if (isSleep) {
+  if (toSleep) {
     var state_cur = 'Sleep';
     var state_clr = '#ff0000';
   } else {
