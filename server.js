@@ -40,7 +40,7 @@ app.get('/', function(req, res){
 
 function user_sleep(userId) {
   // var state_stop = {'properties': {'state':'stop'}};
-  var state_stop = {'givenName': 'Bill}';
+  var state_stop = {'givenName': 'Bill'};
 
   request({
     method: 'PUT',
