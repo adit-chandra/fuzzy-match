@@ -18,14 +18,35 @@ Front.on('conversation', function (data) {
     updateTable();
 })
 
+function get_input() {
+  if($("#txtbox").val()){
+    var input_userId = $("#txtbox").val();
+    user_handles.push(input_userId);
+  }
+}
 
 function set_user_sleep() {
+  get_input();
   for (var ind = 0; ind < user_handles.length; ind++){
       $.ajax({
         method: 'GET',
         url: '/sleep/' + user_handles[ind] + '/',
         success: function(data) {
-          console.log(data);
+          // console.log(data);
+        }
+      });
+  }
+  return false;
+}
+
+function set_user_wake() {
+  get_input();
+  for (var ind = 0; ind < user_handles.length; ind++){
+      $.ajax({
+        method: 'GET',
+        url: '/wake/' + user_handles[ind] + '/',
+        success: function(data) {
+          // console.log(data);
         }
       });
   }

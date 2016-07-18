@@ -38,17 +38,19 @@ app.get('/', function(req, res){
     res.render("index");
 });
 
-function user_sleep(userId) {
-  var state_stop = {'properties': {'state':'stop'}};
-  // var state_stop = {'givenName': 'Bill'};
-
+function user_sleep(userId, toSleep) {
+  if(toSleep) {
+    var state = {'properties': {'state':'stop'}};
+  } else {
+    var state = {'properties': {'state':'start'}};
+  }
   request({
     method: 'PUT',
     url: smooch_uri + userId,
     headers: {
       'app-token' : smooch_app_token
     },
-    json: state_stop
+    json: state
   }, function(error, response, body){
     console.log('ERROR?: ');
     console.log(error);
@@ -58,30 +60,20 @@ function user_sleep(userId) {
     console.log(body);
     return body;
   });
-  // var state_stop = {'properties' : {'state' : 'stop'}};
-//   var options = {
-//     method: 'PUT',
-//     url: smooch_uri + userId,
-//     headers: {
-//       'app-token' : smooch_app_token
-//     },
-//     data: state_stop
-//   };
-//
-//   curl.request(options, function(error, data){
-//     console.log('ERROR?: ');
-//     console.log(error);
-//     console.log('SMOOCH PUT REQUEST RETURNED BODY: ');
-//     console.log(data);
-//     return data;
-//   });
 }
 
 // set users to sleep
 app.get('/sleep/:userId', function(req, res){
   var userId = req.params.userId;
-  var resp_data = user_sleep(userId);
+  var resp_data = user_sleep(userId, true);
   res.send('recieved sleep call!');
+});
+
+// set users to wake (restart)
+app.get('/wake/:userId', function(req, res){
+  var userId = req.params.userId;
+  var resp_data = user_sleep(userId, false);
+  res.send('recieved wake call!');
 });
 
 

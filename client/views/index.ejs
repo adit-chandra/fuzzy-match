@@ -26,7 +26,9 @@
     <div class="container">
 
       <!-- Static navbar -->
-
+      <p>To change state of user(s) simply click on conversation in Front interface
+      and click the sleep[stop] / wake[restart] button. You can also enter an email address to
+      sleep / wake</p>
       <!-- Main component for a primary marketing message or call to action -->
       <div  ng-controller="replyCtrl">
         <div  class="row" id="jtable">
@@ -35,7 +37,8 @@
         <form>
           <textarea id="txtbox" class="row">
           </textarea>
-          <button class="row" onClick="set_user_sleep()">Set Users to Sleep</button>
+          <button class="row" onClick="set_user_sleep()">SLEEP Users</button>
+          <button class="row" onClick="set_user_wake()">WAKE Users</button>
         </form>
 
       </div>
