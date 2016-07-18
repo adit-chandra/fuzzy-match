@@ -37,8 +37,8 @@ app.get('/', function(req, res){
     res.render("index");
 });
 
-function user_sleep(smoochId) {
-  var user_props = {'state' : 'stop'};
+//cnv_22yuim
+function user_sleep(smoochId, user_props) {
   request({
     method: 'PUT',
     url: smooch_uri + smoochId,
@@ -55,7 +55,10 @@ function user_sleep(smoochId) {
 // set users to sleep
 app.get('/sleep/:id', function(req, res){
   var id = req.params.id;
-  res.send(user_sleep(id));
+  var props =   {'state' : 'stop'};
+  var resp = user_sleep(id, props);
+  console.log(resp);
+  res.send('recieve sleep call!');
 });
 
 

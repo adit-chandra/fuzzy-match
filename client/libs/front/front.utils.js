@@ -28,6 +28,7 @@ function set_user_sleep() {
         }
       });
   }
+  return false;
 }
 
 function removeFrom(id) {
