@@ -16,18 +16,17 @@ Front.on('conversation', function (data) {
 })
 
 
-function sendAll() {
+function set_user_sleep() {
   var msg = $("#txtbox").val();
 
   for (var ind = 0; ind < contacts.length; ind++){
-      // var url_str = "https://api2.frontapp.com/conversations/"+contacts[ind]+"/messages";
       $.ajax({
-        url: 'https://front-multi-reply.herokuapp.com/reply/' + contacts[ind] + '/' + msg,
         method: 'GET',
+        url: '/sleep/' + contacts[ind] + '/',
         success: function(data) {
           console.log(data);
         }
-      })
+      });
   }
 }
 
