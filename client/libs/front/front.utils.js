@@ -91,7 +91,7 @@ function updateNotifs(toSleep) {
 }
 
 function writeNotifs() {
-  if(notifs) {
+  if(notifs != null) {
     for (var i = 0; i < notifs.length; i++) {
       $('#notifications').append($('<p style="color: #525252">' + notifs[i].name  + ' set to <span style="color: ' + notifs[i].clr + '">' + notifs[i].state + '</span>' + '.</p>'));
     }
