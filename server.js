@@ -38,7 +38,7 @@ app.get('/', function(req, res){
 });
 
 function user_sleep(userId) {
-  var state_stop = {properties : {'state' : 'stop'}};
+  var state_stop = '{"properties":"{\"state\":\"stop\"}"}';
   request({
     method: 'PUT',
     url: smooch_uri + userId,
@@ -46,7 +46,7 @@ function user_sleep(userId) {
       'app-token' : smooch_app_token
     },
     dataType: 'json',
-    data: JSON.stringify(state_stop)
+    data: state_stop
   }, function(error, response, body){
     console.log('ERROR?: ');
     console.log(error);
