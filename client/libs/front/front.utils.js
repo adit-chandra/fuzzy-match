@@ -1,4 +1,4 @@
-var notifs = sessionStorage.getItem("notifs");
+var notifs = localStorage.getItem("notifs");
 writeNotifs();
 
 var conversation;
@@ -80,19 +80,20 @@ function updateNotifs(toSleep) {
   }
   $('#notifications').empty();
   notifs = [];
-  sessionStorage.setItem("notifs", notifs);
+  localStorage.setItem("notifs", notifs);
   for (var i = 0; i < contacts.length; i++) {
     var notif = {contact : contacts_name[i], state: state_cur, clr : state_clr};
     console.log(notif);
     notifs.push(notif);
     // notifs.push($('<p style="color: #525252">' + notif + '<span style="color: ' + state_clr + '">' + state_cur + '</span>' + '.</p>'))
   }
-  sessionStorage.setItem("notifs", notifs);
+  localStorage.setItem("notifs", notifs);
 }
 
 function writeNotifs() {
   if(notifs != null) {
     for (var i = 0; i < notifs.length; i++) {
+      
       $('#notifications').append($('<p style="color: #525252">' + notifs[i].name  + ' set to <span style="color: ' + notifs[i].clr + '">' + notifs[i].state + '</span>' + '.</p>'));
     }
   }
