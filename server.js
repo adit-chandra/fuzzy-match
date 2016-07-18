@@ -38,7 +38,7 @@ app.get('/', function(req, res){
 });
 
 function user_sleep(userId) {
-  var user_props =  {'state' : 'stop'};
+  var state_stop =  {'properties': '{"state": "stop"}'};
   request({
     method: 'PUT',
     url: smooch_uri + userId,
@@ -46,9 +46,9 @@ function user_sleep(userId) {
       'app-token' : smooch_app_token
     },
     dataType: 'json',
-    data: user_props
+    data: state_stop
   }, function(error, response, body){
-    console.log('SMOOCH PUT REQUEST BODY RETURNED: ');
+    console.log('SMOOCH PUT REQUEST RETURNED BODY: ');
     console.log(body);
     return body;
   });
