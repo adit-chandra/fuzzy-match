@@ -39,42 +39,42 @@ app.get('/', function(req, res){
 });
 
 function user_sleep(userId) {
-  var state_stop = '{"properties":"{\"state\":\"stop\"}"}';
-  // request({
-    // method: 'PUT',
-    // url: smooch_uri + userId,
-    // headers: {
-    //   'app-token' : smooch_app_token
-    // },
-    // dataType: 'json',
-    // data: state_stop
-  // }, function(error, response, body){
-  //   console.log('ERROR?: ');
-  //   console.log(error);
-  //   console.log('RESPONSE?: ');
-  //   console.log(response);
-  //   console.log('SMOOCH PUT REQUEST RETURNED BODY: ');
-  //   console.log(body);
-  //   return body;
-  // });
-  // var state_stop = {'properties' : {'state' : 'stop'}};
-  var options = {
+  var state_stop = {'appVersion' : '5.0'};
+  request({
     method: 'PUT',
     url: smooch_uri + userId,
     headers: {
       'app-token' : smooch_app_token
     },
+    dataType: 'json',
     data: state_stop
-  };
-
-  curl.request(options, function(error, data){
+  }, function(error, response, body){
     console.log('ERROR?: ');
     console.log(error);
+    console.log('RESPONSE?: ');
+    console.log(response);
     console.log('SMOOCH PUT REQUEST RETURNED BODY: ');
-    console.log(data);
-    return data;
+    console.log(body);
+    return body;
   });
-}
+  // var state_stop = {'properties' : {'state' : 'stop'}};
+//   var options = {
+//     method: 'PUT',
+//     url: smooch_uri + userId,
+//     headers: {
+//       'app-token' : smooch_app_token
+//     },
+//     data: state_stop
+//   };
+//
+//   curl.request(options, function(error, data){
+//     console.log('ERROR?: ');
+//     console.log(error);
+//     console.log('SMOOCH PUT REQUEST RETURNED BODY: ');
+//     console.log(data);
+//     return data;
+//   });
+// }
 
 // set users to sleep
 app.get('/sleep/:userId', function(req, res){
