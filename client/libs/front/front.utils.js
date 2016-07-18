@@ -31,7 +31,7 @@ function set_user_sleep() {
         method: 'GET',
         url: '/sleep/' + user_handles[ind] + '/',
         success: function(data) {
-          // console.log(data);
+          updateNotifs(true);
         }
       });
   }
@@ -45,7 +45,7 @@ function set_user_wake() {
         method: 'GET',
         url: '/wake/' + user_handles[ind] + '/',
         success: function(data) {
-          // console.log(data);
+          updateNotifs(false);
         }
       });
   }
@@ -61,6 +61,22 @@ function removeFrom(id) {
     return false;
 }
 
+function updateNotifs(toSleep) {
+  if (isSleep) {
+    var state_cur = 'Sleep.';
+    var state_clr = '#ff0000';
+  } else {
+    var state_cur = 'Wake.';
+    var state_clr = '#0000ff';
+  }
+  $('#notifications').empty();
+  for (int i = 0; i < contacts.length; i++) {
+    var notif = contacts_name[i] + 'set to ';
+    $('#notifications').append($('<p style="color: #525252">' + notif + '<span style="color: ' + state_clr + '">' + state_cur + '</span>' + '.</p>'))
+  }
+  emptyContacts();
+}
+
 function updateTable() {
     var table = $('<table></table>').addClass('table');
     for (var i = 0; i < contacts.length; i++) {
@@ -74,4 +90,10 @@ function updateTable() {
     }
     $('#jtable').empty();
     $('#jtable').append(table);
+}
+
+function emptyContacts() {
+  contacts.length = 0;
+  contacts_name.length = 0;
+
 }
