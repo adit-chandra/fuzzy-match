@@ -38,8 +38,7 @@ app.get('/', function(req, res){
 });
 
 function user_sleep(userId) {
-  var state_stop = '{"properties":"{\"state\":\"stop\"}"}'
-;
+  var state_stop = {'properties': [{'state': 'stop'}]};
   request({
     method: 'PUT',
     url: smooch_uri + userId,
@@ -47,11 +46,11 @@ function user_sleep(userId) {
       'app-token' : smooch_app_token
     },
     dataType: 'json',
-    data: state_stop
+    data: JSON.stringify(state_stop);
   }, function(error, response, body){
-    console.log('ERROR? :');
+    console.log('ERROR?: ');
     console.log(error);
-    console.log('RESPONSE?:');
+    console.log('RESPONSE?: ');
     console.log(response);
     console.log('SMOOCH PUT REQUEST RETURNED BODY: ');
     console.log(body);
@@ -63,7 +62,6 @@ function user_sleep(userId) {
 app.get('/sleep/:userId', function(req, res){
   var userId = req.params.userId;
   var resp = user_sleep(userId);
-  console.log('RESPONSE FROM user_sleep CALL: ');
   res.send('recieved sleep call!');
 });
 
