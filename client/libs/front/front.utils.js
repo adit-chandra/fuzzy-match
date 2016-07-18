@@ -69,7 +69,8 @@ function updateTable() {
     for (var i = 0; i < contacts.length; i++) {
         var row = $('<tr></tr>').addClass('rowrow');
         var entry = $('<td></td>').addClass('entry').text(contacts_name[i]);
-        var button = $('<button></button>').text('Remove').css('font-size': '14px'; 'border': '1px solid #525252'; 'border-radius': '3px'; 'background-color': '#dcdcdc'; 'margin-top': '1px'; 'color': '#525252';});
+        var button = $('<button></button>').text('Remove');
+        button.css('font-size': '14px', 'border': '1px solid #525252', 'border-radius': '3px', 'background-color': '#dcdcdc', 'margin-top': '1px', 'color': '#525252',});
         button.attr("onClick", "removeFrom(" + i + ")");
         row.append(entry).append($('<td></td>').append($(button)));
         table.append(row);
