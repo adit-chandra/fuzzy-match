@@ -1,6 +1,6 @@
-var notif_clr = localStorage('notif_clr', notif_clr);
-var notif_state = localStorage('notif_state', notif_state);
-var notif_contacts = localStorage('notif_contacts', JSON.parse(notif_contacts));
+var notif_clr = localStorage.getItem('notif_clr', notif_clr);
+var notif_state = localStorage.getItem('notif_state', notif_state);
+var notif_contacts = JSON.parse(localStorage.getItem('notif_contacts', notif_contacts));
 
 writeNotifs();
 
