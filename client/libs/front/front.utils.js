@@ -21,7 +21,9 @@ Front.on('conversation', function (data) {
 function get_input() {
   if($("#txtbox").val()){
     var input_userId = $("#txtbox").val();
-    user_handles.push(input_userId);
+    // list -> array
+    var userIds = input_userId.splice(',');
+    user_handles.concat(userIds);
   }
 }
 
@@ -56,9 +58,10 @@ function set_user_wake() {
 function removeFrom(id) {
     // console.log(contacts_name[contacts_name.indexOf(contacts_name[id])]);
     // console.log(contacts[contacts.indexOf(contacts[id])]);
-    contacts.splice(contacts.indexOf(contacts[id]), 1);
-    contacts_name.splice(contacts_name.indexOf(contacts_name[id]), 1);
+    contacts.splice(id, 1);
+    contacts_name.splice(id, 1);
     updateTable();
+    return false;
 }
 
 function updateTable() {
