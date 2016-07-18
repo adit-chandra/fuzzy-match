@@ -8,6 +8,23 @@ var app = express();
 var path = require("path");
 
 var port = process.env.PORT || 3000
+/*
+  debugging
+*/
+(function() {
+    var childProcess = require("child_process");
+    var oldSpawn = childProcess.spawn;
+    function mySpawn() {
+        console.log('spawn called');
+        console.log(arguments);
+        var result = oldSpawn.apply(this, arguments);
+        return result;
+    }
+    childProcess.spawn = mySpawn;
+})();
+/*
+  debugging
+*/
 
 // const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzY29wZXMiOlsiKiJdLCJpc3MiOiJmcm9udCIsInN1YiI6ImlzdGhpc2V2ZW5yZWFsMyJ9.JOoIWqEfwII13dzCrmlowqZILB4wZZN9Bv3jpX5RNTE";
 // const authorization = "Bearer " + token;
@@ -46,7 +63,7 @@ function user_sleep(smoochId) {
     data: user_props
   }, function(error, response, body){
     return body;
-  })
+  });
 }
 
 // set users to sleep

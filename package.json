@@ -1,12 +1,12 @@
 {
-  "name": "movie_request_receiver",
+  "name": "smooch-front-user-sleep-plugin",
   "version": "0.0.1",
-  "description": "Backend Interface for movie requests",
+  "description": "sets users to sleep",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Neil Acharya <nacharya114@gmail.com>",
+  "author": "Adit Chanra",
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.4.2",
