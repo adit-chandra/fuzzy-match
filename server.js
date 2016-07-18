@@ -39,7 +39,7 @@ app.get('/', function(req, res){
 });
 
 function user_sleep(userId) {
-  // var state_stop = '{"properties":"{\"state\":\"stop\"}"}';
+  var state_stop = '{"properties":"{\"state\":\"stop\"}"}';
   // request({
     // method: 'PUT',
     // url: smooch_uri + userId,
@@ -57,7 +57,7 @@ function user_sleep(userId) {
   //   console.log(body);
   //   return body;
   // });
-  var state_stop = {'properties' : {'state' : 'stop'}};
+  // var state_stop = {'properties' : {'state' : 'stop'}};
   var options = {
     method: 'PUT',
     url: smooch_uri + userId,
