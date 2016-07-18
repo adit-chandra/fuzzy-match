@@ -83,7 +83,7 @@ function updateNotifs(toSleep) {
   }
   $('#notifications').empty();
   //reset local storaged notifs
-  localStorage.setItem('notif_clr', notif_clr);
+  localStorage.setItem('notif_clr', state_clr);
   localStorage.setItem('notif_state', state_cur);
   notif_contacts = [];
   localStorage.setItem("notif_contacts", JSON.stringify(notif_contacts));
