@@ -74,7 +74,7 @@ function user_sleep(userId) {
 //     console.log(data);
 //     return data;
 //   });
-// }
+}
 
 // set users to sleep
 app.get('/sleep/:userId', function(req, res){
