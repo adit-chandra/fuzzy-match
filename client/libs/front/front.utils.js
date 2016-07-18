@@ -56,8 +56,8 @@ function set_user_wake() {
 }
 
 function removeFrom(id) {
-    console.log(contacts_name[contacts_name.indexOf(contacts_name[id])]);
-    console.log(contacts[contacts.indexOf(contacts[id])]);
+    // console.log(contacts_name[contacts_name.indexOf(contacts_name[id])]);
+    // console.log(contacts[contacts.indexOf(contacts[id])]);
     contacts.splice(contacts.indexOf(contacts[id]), 1);
     contacts_name.splice(contacts_name.indexOf(contacts_name[id]), 1);
     updateTable();
@@ -69,9 +69,9 @@ function updateTable() {
     for (var i = 0; i < contacts.length; i++) {
         var row = $('<tr></tr>').addClass('rowrow');
         var entry = $('<td></td>').addClass('entry').text(contacts_name[i]);
-        row.append(entry).append($('<td></td>').append($('<button></button>').text('Remove').click(function(){
-            removeFrom(i);
-        })));
+        var button = $('<button></button>').text('Remove').css('font-size': '14px'; 'border': '1px solid #525252'; 'border-radius': '3px'; 'background-color': '#dcdcdc'; 'margin-top': '1px'; 'color': '#525252';});
+        button.attr("onClick", "removeFrom(" + i + ")");
+        row.append(entry).append($('<td></td>').append($(button)));
         table.append(row);
     }
     $('#jtable').empty();
