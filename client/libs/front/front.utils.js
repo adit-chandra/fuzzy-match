@@ -79,9 +79,11 @@ function updateNotifs(toSleep) {
     var state_clr = '#0000ff';
   }
   $('#notifications').empty();
-  notifs = [];
+  notifs.length = 0;
+  localStorage.setItem("notifs", notifs);
   for (var i = 0; i < contacts.length; i++) {
-    notifs.push({contact : contacts_name[i], state: state_cur, clr : state_clr});
+    var notif = {contact : contacts_name[i], state: state_cur, clr : state_clr};
+    notifs.push(notif);
     // notifs.push($('<p style="color: #525252">' + notif + '<span style="color: ' + state_clr + '">' + state_cur + '</span>' + '.</p>'))
   }
   localStorage.setItem("notifs", notifs);
