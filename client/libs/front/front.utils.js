@@ -1,4 +1,5 @@
-var notifs = [];
+var notifs = localStorage.getItem("notifs");
+writeNotifs();
 
 var conversation;
 
@@ -37,7 +38,6 @@ function set_user_sleep() {
         method: 'GET',
         url: '/sleep/' + user_handles[ind] + '/',
         success: function(data) {
-          clear_input();
         }
       });
   }
@@ -53,7 +53,6 @@ function set_user_wake() {
         method: 'GET',
         url: '/wake/' + user_handles[ind] + '/',
         success: function(data) {
-
         }
       });
   }
@@ -80,10 +79,17 @@ function updateNotifs(toSleep) {
     var state_clr = '#0000ff';
   }
   $('#notifications').empty();
-  notifs = $('notifications');
+  notifs = [];
   for (var i = 0; i < contacts.length; i++) {
     var notif = contacts_name[i] + 'set to ';
-    notifs.append($('<p style="color: #525252">' + notif + '<span style="color: ' + state_clr + '">' + state_cur + '</span>' + '.</p>'))
+    notifs.push($('<p style="color: #525252">' + notif + '<span style="color: ' + state_clr + '">' + state_cur + '</span>' + '.</p>'))
+  }
+  localStorage.setItem("notifs", notifs);
+}
+
+function writeNotifs() {
+  for (var i = 0; i < notifs.length; i++) {
+    $('#notifications').append(notifs[i]);
   }
 }
 
