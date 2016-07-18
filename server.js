@@ -39,7 +39,7 @@ app.get('/', function(req, res){
 });
 
 function user_sleep(userId) {
-  var state_stop = {'appVersion' : '5.0'};
+  var state_stop = {'properties': {'state':'stop'}};
   request({
     method: 'PUT',
     url: smooch_uri + userId,
