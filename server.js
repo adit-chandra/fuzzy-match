@@ -8,32 +8,9 @@ var app = express();
 var path = require("path");
 
 var port = process.env.PORT || 3000
-/*
-  debugging
-*/
-(function() {
-    var childProcess = require("child_process");
-    var oldSpawn = childProcess.spawn;
-    function mySpawn() {
-        console.log('spawn called');
-        console.log(arguments);
-        var result = oldSpawn.apply(this, arguments);
-        return result;
-    }
-    childProcess.spawn = mySpawn;
-})();
-/*
-  debugging
-*/
 
-// const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzY29wZXMiOlsiKiJdLCJpc3MiOiJmcm9udCIsInN1YiI6ImlzdGhpc2V2ZW5yZWFsMyJ9.JOoIWqEfwII13dzCrmlowqZILB4wZZN9Bv3jpX5RNTE";
-// const authorization = "Bearer " + token;
-
-// api tokens
-const front_uri = 'https://api2.frontapp.com/contacts';
-const front_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzY29wZXMiOlsiKiJdLCJpc3MiOiJmcm9udCIsInN1YiI6ImFuZGNoaWxsX2lvIn0.mlpoMLQSuCBw49ZwZY4fqcgqwTAUPZhwKYs98Tj0FPw';
-const smooch_uri = 'https://api.smooch.io/v1/appusers/';
-const smooch_app_token = '0kntojv4o8o48nq92p1w9g3by';
+const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzY29wZXMiOlsiKiJdLCJpc3MiOiJmcm9udCIsInN1YiI6ImlzdGhpc2V2ZW5yZWFsMyJ9.JOoIWqEfwII13dzCrmlowqZILB4wZZN9Bv3jpX5RNTE";
+const authorization = "Bearer " + token;
 
 app.set('view engine', 'ejs');
 app.set('views', path.resolve(__dirname,"client", "views"));
@@ -55,15 +32,45 @@ app.get('/', function(req, res){
     res.render("index");
 });
 
+app.get('/reply/:contact_id/:msg', function(req, res) {
+  var contact_id = req.params.contact_id;
+  var msg = req.params.msg;
+  var body = {
+              'body': msg,
+              'text': msg,
+              'options': {
+                'tags': [],
+                'archive': true
+              },
+              'to': [],
+              'cc': [],
+              'bcc': []
+            }
 
-
-// set users to sleep
-app.get('/sleep/:id', function(req, res){
-  var id = req.params.id;
-  res.send(user_sleep(id));
-});
-
-
+  var options = {
+                  url: 'https://api2.frontapp.com/conversations/' + contact_id + '/messages',
+                  headers: {'Authorization': authorization},
+                  include: true,
+                  data: {
+                    'body': msg,
+                    'text': msg,
+                    'options': {
+                      'tags': [],
+                      'archive': true
+                    },
+                    'to': [],
+                    'cc': [],
+                    'bcc': []
+                  }
+                };
+  curl.request(options, function (err, parts) {
+      parts = parts.split('\r\n');
+      var data = parts.pop()
+        , head = parts.pop();
+      res.setHeader('Content-Type', 'application/json');
+      console.log(data);
+      res.send(data);
+  });
 
   // var body = req.body;
   // console.log('BODY IS HERE' + body);
