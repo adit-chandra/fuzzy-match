@@ -31,24 +31,39 @@ app.get('/', function(req, res){
     res.render("index");
 });
 
-function user_sleep(smoochId) {
-  var user_props = {'state' : 'stop'};
-  request({
-    method: 'PUT',
-    url: smooch_uri + smoochId,
-    headers: {
-      'app-token' : smooch_app_token
-    },
-    dataType: 'json',
-    data: user_props
-  }, function(error, response, body){
-    return body;
-  });
-}
+// function user_sleep(smoochId) {
+//   var user_props = {'state' : 'stop'};
+//   request({
+//     method: 'PUT',
+//     url: smooch_uri + smoochId,
+//     headers: {
+//       'app-token' : smooch_app_token
+//     },
+//     dataType: 'json',
+//     data: user_props
+//   }, function(error, response, body){
+//     return body;
+//   });
+// }
 
 // set users to sleep
 app.get('/sleep/:id', function(req, res){
   var id = req.params.id;
+  console.log('RECIEVED SLEEP CALL FOR: ' + id);
+  user_sleep = function (smoochId) {
+    var user_props = {'state' : 'stop'};
+    request({
+      method: 'PUT',
+      url: smooch_uri + smoochId,
+      headers: {
+        'app-token' : smooch_app_token
+      },
+      dataType: 'json',
+      data: user_props
+    }, function(error, response, body){
+      return body;
+    });
+  };
   res.send(user_sleep(id));
 });
 
