@@ -70,18 +70,18 @@ function set_user_sleep() {
         method: 'GET',
         url: 'https://smooch-user-sleep.herokuapp.com/sleep/' + user_handles[ind] + '/',
         success: function(data) {
-
-          // set users Front tag to SLEEP
-          $.ajax({
-            method: 'POST',
-            url: 'https://smooch-user-sleep.herokuapp.com/set-tags/',
-            data: JSON.stringify({'tags': user_tags[ind]}),
-            success: function(data){
-
-            }
-          });
         }
       });
+      // set users Front tag to SLEEP
+      $.ajax({
+        method: 'POST',
+        url: 'https://smooch-user-sleep.herokuapp.com/set-tags/',
+        data: JSON.stringify({'tags': user_tags[ind]}),
+        success: function(data){
+
+        }
+      }):
+    }
   }
   updateNotifs(true);
   console.log('update notifs called!');
@@ -104,18 +104,17 @@ function set_user_wake() {
         method: 'GET',
         url: 'https://smooch-user-sleep.herokuapp.com/wake/' + user_handles[ind] + '/',
         success: function(data) {
-
-          // set users Front tag to WAKE
-          $.ajax({
-            method: 'POST',
-            url: 'https://smooch-user-sleep.herokuapp.com/set-tags/',
-            data: JSON.stringify({'tags': user_tags[ind], 'convoId': contacts[ind]}),
-            success: function(data){
-
-            }
-          });
         }
       });
+      // set users Front tag to WAKE
+      $.ajax({
+        method: 'POST',
+        url: 'https://smooch-user-sleep.herokuapp.com/set-tags/',
+        data: JSON.stringify({'tags': user_tags[ind], 'convoId': contacts[ind]}),
+        success: function(data){
+        }
+      });
+    }
   }
   updateNotifs(false);
   console.log('update notifs called!');
