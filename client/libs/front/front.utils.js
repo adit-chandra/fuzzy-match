@@ -66,7 +66,7 @@ function set_user_sleep() {
       user_tags[ind].push('SLEEP')
       var front_tags = {'tags': user_tags[ind]};
       console.log('Sent tags:');
-      console.log(front_tags);
+      console.log(JSON.stringify(front_tags);
       // set users to sleep
       $.ajax({
         method: 'GET',
