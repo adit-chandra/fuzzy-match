@@ -29,6 +29,14 @@ Front.on('conversation', function (data) {
         contacts.push(conversation.id);
         contacts_name.push(conversation.contact.name);
         user_handles.push(conversation.contact.handle);
+        console.log('Handles');
+        console.log(user_handles);
+        console.log('Contact Ids');
+        console.log(contacts);
+        console.log('Contact Names');
+        console.log(contacts_name);
+        console.log('Tags');
+        console.log(user_tags);
     }
     updateTable();
 })
