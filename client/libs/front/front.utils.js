@@ -1,3 +1,9 @@
+/*
+ * choosing to keep vars as arrays should we choose we'd like to handle
+ * multipe users in the future
+ * -Adit
+ */
+
 var notif_clr = localStorage.getItem('notif_clr', notif_clr);
 var notif_state = localStorage.getItem('notif_state', notif_state);
 var notif_contacts = JSON.parse(localStorage.getItem('notif_contacts', notif_contacts));
@@ -5,7 +11,7 @@ var notif_contacts = JSON.parse(localStorage.getItem('notif_contacts', notif_con
 writeNotifs();
 
 var conversation;
-
+var user_tags = [];
 var contacts = [];
 var contacts_name = [];
 var user_handles = [];
@@ -18,6 +24,8 @@ Front.on('conversation', function (data) {
         contacts = [];
         contacts_name = [];
         user_handles = [];
+        user_tags = []''
+        user_tags.push(conversation.tags);
         contacts.push(conversation.id);
         contacts_name.push(conversation.contact.name);
         user_handles.push(conversation.contact.handle);
@@ -40,11 +48,30 @@ function clear_input() {
 
 function set_user_sleep() {
   get_input();
+
   for (var ind = 0; ind < user_handles.length; ind++){
+      //remove WAKE tag if present
+      var i = user_tags[ind].indexOf('WAKE');
+      if (i > -1) {
+        user_tags[ind].splice(i, 1);
+      }
+      user_tags[ind].push('SLEEP')
+
+      // set users to sleep
       $.ajax({
         method: 'GET',
         url: 'https://smooch-user-sleep.herokuapp.com/sleep/' + user_handles[ind] + '/',
         success: function(data) {
+
+          // set users Front tag to SLEEP
+          $.ajax({
+            method: 'POST',
+            url: 'https://smooch-user-sleep.herokuapp.com/set-tags/',
+            data: JSON.stringify({'tags': user_tags[ind]}),
+            success: function(data){
+
+            }
+          });
         }
       });
   }
@@ -55,11 +82,30 @@ function set_user_sleep() {
 
 function set_user_wake() {
   get_input();
+
   for (var ind = 0; ind < user_handles.length; ind++){
+      //remove SLEEP tag if present
+      var i = user_tags[ind].indexOf('SLEEP');
+      if (i > -1) {
+        user_tags[ind].splice(i, 1);
+      }
+      user_tags[ind].push('WAKE')
+
+      // set users to WAKE
       $.ajax({
         method: 'GET',
         url: 'https://smooch-user-sleep.herokuapp.com/wake/' + user_handles[ind] + '/',
         success: function(data) {
+
+          // set users Front tag to WAKE
+          $.ajax({
+            method: 'POST',
+            url: 'https://smooch-user-sleep.herokuapp.com/set-tags/',
+            data: JSON.stringify({'tags': user_tags[ind], 'convoId': contacts[ind]}),
+            success: function(data){
+
+            }
+          });
         }
       });
   }
