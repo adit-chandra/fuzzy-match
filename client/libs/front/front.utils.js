@@ -24,7 +24,7 @@ Front.on('conversation', function (data) {
         contacts = [];
         contacts_name = [];
         user_handles = [];
-        user_tags = []''
+        user_tags = [];
         user_tags.push(conversation.tags);
         contacts.push(conversation.id);
         contacts_name.push(conversation.contact.name);
