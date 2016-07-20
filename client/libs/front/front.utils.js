@@ -80,7 +80,7 @@ function set_user_sleep() {
         success: function(data){
 
         }
-      }):
+      });
     }
   }
   updateNotifs(true);
