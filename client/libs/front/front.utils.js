@@ -115,7 +115,7 @@ function set_user_wake() {
         }
       });
     }
-  
+
   updateNotifs(false);
   console.log('update notifs called!');
   return false;

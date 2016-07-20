@@ -79,6 +79,7 @@ app.get('/wake/:userId', function(req, res){
 
 //set user convo tags in Front
 app.post('/set-tags/', function(req, res){
+  var resp = 'unfulfilled!';
   console.log('recieved tag change call!');
   var tags = req.body.tags;
   var convoId = req.body.id;
@@ -99,8 +100,9 @@ app.post('/set-tags/', function(req, res){
     console.log(response);
     console.log('FRONT PATCH REQUEST RETURNED BODY: ');
     console.log(body);
-    return body;
+    resp = body;
   });
+  res.send(resp);
 });
 
 
