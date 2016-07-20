@@ -64,7 +64,9 @@ function set_user_sleep() {
         user_tags[ind].splice(i, 1);
       }
       user_tags[ind].push('SLEEP')
-
+      var front_tags = {'tags': user_tags[ind]};
+      console.log('Sent tags:');
+      console.log(front_tags);
       // set users to sleep
       $.ajax({
         method: 'GET',
@@ -75,8 +77,8 @@ function set_user_sleep() {
       // set users Front tag to SLEEP
       $.ajax({
         method: 'POST',
-        url: 'https://smooch-user-sleep.herokuapp.com/set-tags/',
-        data: JSON.stringify({'tags': user_tags[ind]}),
+        url: 'https://smooch-user-sleep.herokuapp.com/tag/',
+        data: JSON.stringify(front_tags),
         success: function(data){
 
         }

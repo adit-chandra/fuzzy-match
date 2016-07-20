@@ -67,22 +67,18 @@ function user_sleep(userId, toSleep) {
 app.get('/sleep/:userId', function(req, res){
   var userId = req.params.userId;
   var resp_data = user_sleep(userId, true);
-  res.send('recieved sleep call!');
+  res.send('recieved sleep GET!');
 });
 
 // set users to wake (restart)
 app.get('/wake/:userId', function(req, res){
   var userId = req.params.userId;
   var resp_data = user_sleep(userId, false);
-  res.send('recieved wake call!');
+  res.send('recieved wake GET!');
 });
 
-//set user convo tags in Front
-app.post('/set-tags/', function(req, res){
-  var resp = 'unfulfilled!';
-  console.log('recieved tag change call!');
-  var tags = req.body.tags;
-  var convoId = req.body.id;
+// set user Front convo tags
+function setTags(convoId, tags) {
   console.log('TAGS');
   console.log(tags);
   var tags_json = {'tags' : tags};
@@ -100,9 +96,15 @@ app.post('/set-tags/', function(req, res){
     console.log(response);
     console.log('FRONT PATCH REQUEST RETURNED BODY: ');
     console.log(body);
-    resp = body;
+    return body
   });
-  res.send(resp);
+}
+
+//set user convo tags in Front
+app.post('/tag/', function(req, res){
+  var tags = req.body.tags;
+  var convoId = req.body.id;
+.send('recieved tag set call POST!');
 });
 
 
