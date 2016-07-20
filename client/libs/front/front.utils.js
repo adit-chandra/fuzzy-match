@@ -12,8 +12,12 @@ var user_handles = [];
 
 Front.on('conversation', function (data) {
     conversation = data.conversation;
-    // console.log(conversation);
+    console.log(conversation);
     if (!(contacts.indexOf(conversation.id) > -1)) {
+        //null current vals
+        contacts = [];
+        contacts_name = [];
+        user_handles = [];
         contacts.push(conversation.id);
         contacts_name.push(conversation.contact.name);
         user_handles.push(conversation.contact.handle);
