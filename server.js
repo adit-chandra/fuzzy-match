@@ -104,7 +104,7 @@ function setTags(convoId, tags) {
 app.post('/tag/', function(req, res){
   var tags = req.body.tags;
   var convoId = req.body.id;
-.send('recieved tag set call POST!');
+  res.send('recieved tag set call POST!');
 });
 
 
