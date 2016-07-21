@@ -1,5 +1,5 @@
 {
-  "name": "Fuzzy Match Server",
+  "name": "Fuzzy-Match-Movie",
   "version": "0.0.1",
   "description": "fuzzy match incoming requests to movie titles",
   "main": "server.js",
