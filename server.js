@@ -13,23 +13,23 @@ var port = process.env.PORT || 3000
 
 var movie_dictionary = [];
 
-fs.createReadStream('moviemap.csv')
-    .pipe(csv())
-    .on('data', function(data) {
-        movie_dictionary.push(data.Movie);
-        // console.log('adding: ' + data.Movie);
-    })
-    .on('end', function(){
-        console.log('FINISHED PARSING MOVIES INTO DICTIONARY!');
-        console.log(movie_dictionary[2]);
-    });
-
-var fuse = new Fuse(movie_dictionary, {include: ['matches'], verbose: false});
-
-function fuzzyMatch(title) {
-  var matches = fuse.search(removeLeadingArticles(title));
-  return matches[0];
-}
+// fs.createReadStream('moviemap.csv')
+//     .pipe(csv())
+//     .on('data', function(data) {
+//         movie_dictionary.push(data.Movie);
+//         // console.log('adding: ' + data.Movie);
+//     })
+//     .on('end', function(){
+//         console.log('FINISHED PARSING MOVIES INTO DICTIONARY!');
+//         console.log(movie_dictionary[2]);
+//     });
+//
+// var fuse = new Fuse(movie_dictionary, {include: ['matches'], verbose: false});
+//
+// function fuzzyMatch(title) {
+//   var matches = fuse.search(removeLeadingArticles(title));
+//   return matches[0];
+// }
 
 app.set('view engine', 'ejs');
 app.set('views', path.resolve(__dirname,"client", "views"));
