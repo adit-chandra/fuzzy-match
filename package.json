@@ -15,7 +15,7 @@
     "body-parser": "^1.9.2",
     "curlrequest": "^0.5.7",
     "csv-parser": "^1.9.3",
-    "fuse": "^2.3.0",
+    "fuse.js": "^2.3.0",
     "jsonwebtoken": "^5.7.0"
   }
 }
