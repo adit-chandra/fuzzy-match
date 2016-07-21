@@ -111,7 +111,7 @@ function set_user_wake() {
       // set users Front tag to WAKE
       $.ajax({
         method: 'POST',
-        url: 'https://smooch-user-sleep.herokuapp.com/set-tags/',
+        url: 'https://smooch-user-sleep.herokuapp.com/tag/',
         data: JSON.stringify({'tags': user_tags[ind], 'convoId': contacts[ind]}),
         success: function(data){
         }
@@ -119,7 +119,6 @@ function set_user_wake() {
     }
 
   updateNotifs(false);
-  console.log('update notifs called!');
   return false;
 }
 
