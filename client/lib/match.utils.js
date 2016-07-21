@@ -46,7 +46,6 @@ function writeMatches(q, m) {
 $('#input').keypress(function(e){
   if(e.keyCode == 13 && !e.shiftKey) {
    e.preventDefault();
-   getFuzzyMatch()();
    this.form.submit();
   }
 });
