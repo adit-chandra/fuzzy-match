@@ -1,4 +1,4 @@
-<html lang="en"  ng-app="frontApp"><head>
+<html lang="en"  ng-app="smoochApp"><head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,10 +7,11 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Smooch User Sleep/Wake</title>
+    <title>And Chill | Fuzzy Match Server | [Live!]</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="libs/bootstrap/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 
@@ -21,33 +22,5 @@
     <![endif]-->
   </head>
 
-  <body>
-
-    <div class="container">
-
-      <!-- Static navbar -->
-      <br><p style="font-size: 14px;line-height: 15px;border-bottom: solid 1px #d3d3d3;padding-bottom: 10px; padding-bottom: 20px;margin-bottom: 0;">To change state of user simply click on conversation a in Front interface
-      and click the sleep[stop] / wake[restart] button. You can also enter an email addresse to
-      sleep / wake</p><br>
-      <!-- Main component for a primary marketing message or call to action -->
-      <div  ng-controller="replyCtrl">
-        <div style="margin-left: 16px;" id="jtable">
-        </div>
-
-        <form style="width: 100%;">
-          <textarea placeholder="...or manually enter e-mail" style="margin-left: 17px; width: 238px; height: 24px; border: solid 1px #d3d3d3;border-radius: 5px;" id="txtbox" ></textarea>
-          <button style="font-weight: bold;font-size: 12px;border-radius: 4px; margin-top: 20px; background-color: #ffcfcf; border: solid 1px #ff0000; color: #ff0000; width: 100px; margin-left: 17px;" onClick="set_user_sleep()">SLEEP Users</button>
-          <button style="font-weight: bold;font-size: 12px;border-radius: 4px; margin-top: 20px; background-color: #d3f6ff; border: solid 1px #0000ff; color: #0000ff; width: 100px; margin-left: 33px;" onClick="set_user_wake()">WAKE Users</button>
-        </form>
-        <br><p style="font-weight: bold;border-top: solid 1px #d3d3d3; padding-top: 20px;">Notifications:</p>
-        <div style="margin-left: 12px;border-left: solid 1px lightgrey;padding-left: 12px;" id="notifications"></div>
-
-    </div> <!-- /container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://dl.frontapp.com/libs/frontjs.min.js"></script>
-    <script src="libs/front/front.utils.js"></script>
-</body></html>
+  <body></body>
+</html>

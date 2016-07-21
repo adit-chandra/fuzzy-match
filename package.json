@@ -1,7 +1,7 @@
 {
-  "name": "smooch-front-user-sleep-plugin",
+  "name": "Fuzzy Match Server",
   "version": "0.0.1",
-  "description": "sets users to sleep",
+  "description": "fuzzy match incoming requests to movie titles",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,6 +13,9 @@
     "express": "^4.13.4",
     "request": "^2.73.0",
     "body-parser": "^1.9.2",
-    "curlrequest": "^0.5.7"
+    "curlrequest": "^0.5.7",
+    "csv-parser": "^1.9.3",
+    "fuse": "^2.3.0",
+    "jsonwebtoken": "^5.7.0"
   }
 }
