@@ -3,7 +3,7 @@ var request = require('request');
 var bodyParser = require('body-parser');
 const csv = require('csv-parser');
 const fs = require('fs');
-const Fuse = require('fuse');
+const Fuse = require('fuse.js');
 
 var app = express();
 
