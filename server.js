@@ -14,10 +14,10 @@ var port = process.env.PORT || 3000
 
 // api tokens
 const front_uri = 'https://api2.frontapp.com/conversations/';
-const front_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzY29wZXMiOlsiKiJdLCJpc3MiOiJmcm9udCIsInN1YiI6ImFuZGNoaWxsX2lvIn0.mlpoMLQSuCBw49ZwZY4fqcgqwTAUPZhwKYs98Tj0FPw'; // production token
+const front_token = process.env.FRONT_TOKEN; // production token
 // const front_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzY29wZXMiOlsiKiJdLCJpc3MiOiJmcm9udCIsInN1YiI6ImlzdGhpc2V2ZW5yZWFsMyJ9.JOoIWqEfwII13dzCrmlowqZILB4wZZN9Bv3jpX5RNTE'; // dev token
 const smooch_uri = 'https://api.smooch.io/v1/appusers/';
-const smooch_app_token = 'at8jc982yoiaa8qb6d59z9xrl'; // production token
+const smooch_app_token = process.env.SMOOCH_APP_TOKEN; // production token
 // const smooch_app_token = '0kntojv4o8o48nq92p1w9g3by'; //dev token
 app.set('view engine', 'ejs');
 app.set('views', path.resolve(__dirname,"client", "views"));
