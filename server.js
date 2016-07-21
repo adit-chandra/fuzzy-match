@@ -15,14 +15,19 @@ fs.createReadStream('moviemap.csv')
     })
     .on('end', function(){
         console.log('FINISHED PARSING MOVIES INTO DICTIONARY!');
-        console.log(movie_dictionary);
+        // console.log(movie_dictionary);
+        // console.log(movie_dictionary[592]);
     });
 
-var fuse = new Fuse(movie_dictionary, {include: ['matches'], verbose: false});
+var fuse = new Fuse(movie_dictionary /*, {include: ['matches'], verbose: false}*/);
 
 function fuzzyMatch(title) {
   var matches = fuse.search(removeLeadingArticles(title));
   return matches[0];
+}
+
+function removeLeadingArticles(title) {
+  return title;
 }
 
 var app = express();
@@ -36,10 +41,10 @@ app.set('views', path.resolve(__dirname,"client", "views"));
 
 app.use(express.static(path.resolve(__dirname, "client")));
 
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// parse application/json
-app.use(bodyParser.json());
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -51,9 +56,11 @@ app.get('/', function(req, res){
     res.render("index");
 });
 
-app.post('/match', function(req, res){
+app.post('/match/', function(req, res){
   var title = req.body.title;
-  res.send(fuzzyMatch(title));
+  var match = fuzzyMatch(title)
+  console.log('matched: \"' + title + '\" with ' + movie_dictionary[match] + '!');
+  res.send(JSON.stringify(movie_dictionary[match]));
 })
 
 app.listen(port, function(){

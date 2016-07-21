@@ -6,14 +6,12 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
 
     <title>And Chill | Fuzzy Movie Matching!</title>
 
-    <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
+    <script src="/lib/match.utils.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -23,6 +21,25 @@
   </head>
 
   <body>
-    <h1>And Chill | Fuzzy Movie Matching!</h1>
+    <h1 style="text-align: center;">And Chill | Fuzzy Movie Matching</h1>
+
+    <div class="container">
+
+    <br><p style="text-align: center; font-size: 14px;line-height: 15px;border-bottom: solid 1px #d3d3d3;padding-bottom: 10px; padding-bottom: 20px;margin-bottom: 0;">Enter string to fuzzy match with movie title: (enter or button)</p><br>
+    <div  ng-controller="replyCtrl">
+      <div style="margin-left: 16px;" id="jtable">
+      </div>
+
+      <form style="width: 100%;">
+        <textarea placeholder="string to fuzzy match..." style="top: 140px;left: 316px;width: 238px;height: 24px;border: solid 1px #d3d3d3;border-radius: 5px;position: absolute;" id="input" ></textarea>
+        <button style="font-weight: bold;font-size: 12px;border-radius: 4px;top: 140px;left: 553px;background-color: #cfffe9;border: solid 1px #00ffab;color: #00ffab;width: 100px;margin-left: 17px;position: absolute;" onClick="getFuzzyMatch()">Match</button>
+      </form>
+      <br>
+      <p style="font-weight: bold;border-top: solid 1px #d3d3d3; padding-top: 20px;">Matches:</p>
+      <div style="margin-left: 12px;border-left: solid 1px lightgrey;padding-left: 12px;" id="results"></div>
+
+  </div>
+
+
   </body>
 </html>
