@@ -11,7 +11,6 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="/lib/match.utils.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -39,14 +38,8 @@
       <div style="margin-left: 12px;border-left: solid 1px lightgrey;padding-left: 12px;" id="results"></div>
 
   </div>
-  <script>
-  $('#input').keypress(function(e){
-    if(e.keyCode == 13 && !e.shiftKey) {
-     e.preventDefault();
-     this.form.submit();
-    }
-  });
-  </script>
+
 
   </body>
+  <script src="/lib/match.utils.js"></script>
 </html>
