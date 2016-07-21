@@ -4,9 +4,7 @@ A Front plugin that communicates with Smooch and Front API to set specific users
 
 ### Usage ###
 
-Simply click a converstaion and click state button to change user state.
-
-Alternatively enter an email corresponding to a user/coversation to change state.
+Simply click a converstaion and click state button to change user state. Alternatively enter an email corresponding to a user/coversation to change state.
 
 
 
