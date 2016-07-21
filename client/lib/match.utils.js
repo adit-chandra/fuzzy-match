@@ -7,7 +7,7 @@ if ((queries == null) || (matches == null)) {
   matches = [];
 }
 
-writeMatches(queries, matches);
+writeMatches();
 
 
 function getFuzzyMatch() {
@@ -30,22 +30,15 @@ function getFuzzyMatch() {
       localStorage.setItem("matches", JSON.stringify(matches));
     }
   });
-  writeMatches(queries, matches);
+  writeMatches();
   return true;
 }
 
-function writeMatches(q, m) {
+function writeMatches() {
   console.log('MATCH CALL');
   for (var i = 0; i < matches.length; i++) {
     if((queries[i] != null) && (matches[i] != null)) {
-      $('#results').append($('<p style="color: #525252">' + '<span style="color: #000000;">\"' + q[i]  + '\"</span>' + ' fuzzy matched to: ' + '<span style="color: #00ffab;">' + m[i] + '</span>' + '.</p>'));
+      $('#results').append($('<p style="color: #525252">' + '<span style="color: #000000;">\"' + queries[i]  + '\"</span>' + ' fuzzy matched to: ' + '<span style="color: #00ffab;">' + matches[i] + '</span>' + '.</p>'));
     }
   }
 }
-
-$('#input').keypress(function(e){
-  if(e.keyCode == 13 && !e.shiftKey) {
-   e.preventDefault();
-   this.form.submit();
-  }
-});
