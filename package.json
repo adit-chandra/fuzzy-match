@@ -15,7 +15,13 @@
     "body-parser": "^1.9.2",
     "curlrequest": "^0.5.7",
     "csv-parser": "^1.9.3",
+    "jsonwebtoken": "^5.7.0",
+    "csv-parser": "^1.9.3",
     "fuse.js": "^2.3.0",
-    "jsonwebtoken": "^5.7.0"
+    "express": "^4.13.4",
+    "hbs": "^4.0.0",
+    "jsonwebtoken": "^5.7.0",
+    "lodash": "^4.13.1"
+
   }
 }
