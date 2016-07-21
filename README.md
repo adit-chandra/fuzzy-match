@@ -1,29 +1,14 @@
-# README #
+# And Chill User Killswitch #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+A Front plugin that communicates with Smooch and Front API to set specific users into a sleep/wake state.
 
-### What is this repository for? ###
+### Usage ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+Simply click a converstaion and click state button to change user state.
 
-### How do I get set up? ###
+Alternatively enter an email corresponding to a user/coversation to change state.
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
 
-### Contribution guidelines ###
 
-* Writing tests
-* Code review
-* Other guidelines
+(c) And Chill 2016
 
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
