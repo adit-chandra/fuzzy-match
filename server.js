@@ -51,7 +51,7 @@ app.get('/', function(req, res){
     res.render("index");
 });
 
-app.post('/', function(req, res){
+app.post('/match', function(req, res){
   var title = req.body.title;
   res.send(fuzzyMatch(title));
 })
