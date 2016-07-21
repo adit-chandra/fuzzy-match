@@ -39,7 +39,14 @@
       <div style="margin-left: 12px;border-left: solid 1px lightgrey;padding-left: 12px;" id="results"></div>
 
   </div>
-
+  <script>
+  $('#input').keypress(function(e){
+    if(e.keyCode == 13 && !e.shiftKey) {
+     e.preventDefault();
+     this.form.submit();
+    }
+  });
+  </script>
 
   </body>
 </html>

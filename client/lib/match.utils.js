@@ -1,13 +1,13 @@
 var queries = JSON.parse(localStorage.getItem('queries', queries));
 var matches = JSON.parse(localStorage.getItem('matches', matches));
 
-writeMatches(queries, matches);
-
 //check for null storage
 if ((queries == null) || (matches == null)) {
   queries = [];
   matches = [];
 }
+
+writeMatches(queries, matches);
 
 
 function getFuzzyMatch() {
