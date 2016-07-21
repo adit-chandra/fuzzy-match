@@ -30,7 +30,6 @@ function getFuzzyMatch() {
       localStorage.setItem("matches", JSON.stringify(matches));
     }
   });
-  writeMatches();
   return true;
 }
 
