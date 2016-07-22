@@ -7,7 +7,8 @@ const Fuse = require('fuse.js');
 
 var movie_dictionary = [];
 
-fs.createReadStream('moviemap.csv')
+console.log('Piping movie sheet into fuse dictionary...');
+fs.createReadStream('moviemap2.csv')
     .pipe(csv())
     .on('data', function(data) {
         var entry = data.Movie;
@@ -16,20 +17,20 @@ fs.createReadStream('moviemap.csv')
         // console.log('adding: ' + data.Movie);
     })
     .on('end', function(){
-        console.log('FINISHED PARSING MOVIES INTO DICTIONARY!');
+        console.log('Done! Outputting verbose. Listening...');
         // console.log(movie_dictionary);
         // console.log(movie_dictionary[592]);
     });
 
 //fuse tuning params
-var params = {
-              include: ['score', 'matches'],
-              threshold: 0.3,
-              maxPatternLength: 50,
-              verbose: true
-            };
-            
-var fuse = new Fuse(movie_dictionary, params);
+// var params = {
+//               include: ['score', 'matches'],
+//               threshold: 0.3,
+//               maxPatternLength: 50,
+//               verbose: true
+//             };
+
+var fuse = new Fuse(movie_dictionary, {include: ['score', 'matches'], threshold: 0.3, maxPatternLength: 50, verbose: true});
 
 function fuzzyMatch(title) {
   var matches = fuse.search(removeLeadingArticles(title));
