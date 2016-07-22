@@ -19,7 +19,7 @@ fs.createReadStream('moviemap.csv')
         // console.log(movie_dictionary[592]);
     });
 
-var fuse = new Fuse(movie_dictionary /*, {include: ['matches'], verbose: false}*/);
+var fuse = new Fuse(movie_dictionary, {include: ['score'], threshold: 0.3}/*, {include: ['matches'], verbose: false}*/);
 
 function fuzzyMatch(title) {
   var matches = fuse.search(removeLeadingArticles(title));
@@ -58,9 +58,15 @@ app.get('/', function(req, res){
 
 app.post('/match/', function(req, res){
   var title = req.body.title;
-  var match = fuzzyMatch(title)
-  console.log('matched: \"' + title + '\" with ' + movie_dictionary[match] + '!');
-  res.send(JSON.stringify(movie_dictionary[match]));
+  var match = fuzzyMatch(title);
+  console.log(JSON.stringify(match));
+  // console.log('matched: \"' + title + '\" with ' + movie_dictionary[match] + '!');
+  if (match !== undefined) {
+    console.log('matched: \"' + title + '\" with ' + movie_dictionary[match.item] + '!');
+    res.send(JSON.stringify(movie_dictionary[match.item]));
+  } else {
+    res.send('No confident match.')
+  }
 })
 
 app.listen(port, function(){

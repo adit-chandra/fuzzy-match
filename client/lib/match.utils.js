@@ -37,7 +37,12 @@ function writeMatches() {
   console.log('MATCH CALL');
   for (var i = 0; i < matches.length; i++) {
     if((queries[i] != null) && (matches[i] != null)) {
-      $('#results').append($('<p style="color: #525252">' + '<span style="color: #000000;">\"' + queries[i]  + '\"</span>' + ' fuzzy matched to: ' + '<span style="color: #00ffab;">' + matches[i] + '</span>' + '.</p>'));
+      if (matches[i] == 'No confident match.') {
+        var color = '#ff005c';
+      } else {
+        var color = '#00ffab';
+      }
+      $('#results').append($('<p style="color: #525252">' + '<span style="color: #000000;">\"' + queries[i]  + '\"</span>' + ' fuzzy matched to: ' + '<span style="color: ' + color + ';">' + matches[i] + '</span>' + '.</p>'));
     }
   }
 }
