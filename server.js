@@ -10,7 +10,9 @@ var movie_dictionary = [];
 fs.createReadStream('moviemap.csv')
     .pipe(csv())
     .on('data', function(data) {
-        movie_dictionary.push(data.Movie);
+        var entry = data.Movie;
+        // entry = entry.replace(/[!@#$%^&*'":;,\s+]/g, "");
+        movie_dictionary.push(entry);
         // console.log('adding: ' + data.Movie);
     })
     .on('end', function(){
@@ -19,7 +21,15 @@ fs.createReadStream('moviemap.csv')
         // console.log(movie_dictionary[592]);
     });
 
-var fuse = new Fuse(movie_dictionary, {include: ['score'], threshold: 0.3}/*, {include: ['matches'], verbose: false}*/);
+//fuse tuning params
+var params = {
+              include: ['score', 'matches'],
+              threshold: 0.3,
+              maxPatternLength: 50,
+              verbose: true
+            };
+            
+var fuse = new Fuse(movie_dictionary, params);
 
 function fuzzyMatch(title) {
   var matches = fuse.search(removeLeadingArticles(title));
@@ -61,7 +71,7 @@ app.post('/match/', function(req, res){
   var match = fuzzyMatch(title);
   console.log(JSON.stringify(match));
   // console.log('matched: \"' + title + '\" with ' + movie_dictionary[match] + '!');
-  if (match !== undefined) {
+  if ((match !== undefined) && (match.score < 0.3)) {
     console.log('matched: \"' + title + '\" with ' + movie_dictionary[match.item] + '!');
     res.send(JSON.stringify(movie_dictionary[match.item]));
   } else {
