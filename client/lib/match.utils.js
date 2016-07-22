@@ -38,7 +38,8 @@ function writeMatches() {
   var color;
   for (var i = 0; i < matches.length; i++) {
     if((queries[i] != null) && (matches[i] != null)) {
-      if (matches[i] == 'No confident match.') {
+      if (matches[i] == 'NOTHING') {
+        matches[i] = 'no confident match'
         color = '#ff005c';
       } else {
         color = '#00ffab';
