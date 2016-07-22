@@ -33,7 +33,11 @@ fs.createReadStream('moviemap2.csv')
 var fuse = new Fuse(movie_dictionary, {include: ['score', 'matches'], threshold: 0.3, maxPatternLength: 50, verbose: true});
 
 function fuzzyMatch(title) {
-  var matches = fuse.search(removeLeadingArticles(title));
+  //handle special chars
+  var query = title.replace(/[!@#$%^&*'":;,\s+]/g, "");
+  //fuzzy search dictionary
+  var matches = fuse.search(removeLeadingArticles(query));
+  //return top-scored match
   return matches[0];
 }
 
