@@ -65,6 +65,7 @@ app.post('/match/', function(req, res){
     console.log('matched: \"' + title + '\" with ' + movie_dictionary[match.item] + '!');
     res.send(JSON.stringify(movie_dictionary[match.item]));
   } else {
+    console.log('No confident match.');
     res.send('No confident match.')
   }
 })
