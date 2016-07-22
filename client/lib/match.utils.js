@@ -1,5 +1,5 @@
-var queries = JSON.parse(localStorage.getItem('queries', queries));
-var matches = JSON.parse(localStorage.getItem('matches', matches));
+var queries = JSON.parse(sessionStorage.getItem('queries', queries));
+var matches = JSON.parse(sessionStorage.getItem('matches', matches));
 
 //check for null storage
 if ((queries == null) || (matches == null)) {
@@ -23,11 +23,11 @@ function getFuzzyMatch() {
       // console.log(data);
       queries.push(query);
       console.log(queries);
-      localStorage.setItem("queries", JSON.stringify(queries));
+      sessionStorage.setItem("queries", JSON.stringify(queries));
 
       matches.push(data);
       console.log(matches);
-      localStorage.setItem("matches", JSON.stringify(matches));
+      sessionStorage.setItem("matches", JSON.stringify(matches));
     }
   });
   return true;
