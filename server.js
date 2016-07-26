@@ -30,7 +30,7 @@ fs.createReadStream('moviemap2.csv')
 //               verbose: true
 //             };
 
-var fuse = new Fuse(movie_dictionary, {include: ['score', 'matches'], threshold: 0.3, maxPatternLength: 50, verbose: true});
+var fuse = new Fuse(movie_dictionary, {include: ['score', 'matches'], threshold: 0.3, maxPatternLength: 50, verbose: false});
 
 function fuzzyMatch(title) {
   //handle special chars
@@ -72,6 +72,7 @@ app.get('/', function(req, res){
 });
 
 app.post('/match/', function(req, res){
+  console.log('match call');
   var title = req.body.title;
   var match = fuzzyMatch(title);
   console.log(JSON.stringify(match));
