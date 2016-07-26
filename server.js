@@ -22,7 +22,7 @@ fs.createReadStream('moviemap2.csv')
         // console.log(movie_dictionary[592]);
     });
 
-//fuse tuning params
+//fuse tuning
 // var params = {
 //               include: ['score', 'matches'],
 //               threshold: 0.3,
@@ -78,7 +78,7 @@ app.post('/match/', function(req, res){
   console.log(JSON.stringify(match));
   // console.log('matched: \"' + title + '\" with ' + movie_dictionary[match] + '!');
   if ((match !== undefined) && (match.score < 0.3)) {
-    console.log('matched: \"' + title + '\" with ' + movie_dictionary[match.item] + '!');
+    console.log('MATCHED: \"' + title + '\" with ' + movie_dictionary[match.item] + '!');
     res.send(JSON.stringify(movie_dictionary[match.item]));
   } else {
     console.log('No confident match.');
