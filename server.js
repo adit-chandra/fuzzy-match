@@ -30,10 +30,7 @@ fs.createReadStream('moviemap3.csv')
 //               verbose: true
 //             };
 
-var fuse = new Fuse(movie_dictionary, {include: ['score', 'matches'],
-                                       threshold: 0.6,
-                                       maxPatternLength: 50,
-                                       verbose: false});
+var fuse = new Fuse(movie_dictionary, {include: ['score', 'matches'], threshold: 0.6, maxPatternLength: 50, verbose: false});
 
 function fuzzyMatch(title) {
   //handle special chars
