@@ -8,7 +8,7 @@ const Fuse = require('fuse.js');
 var movie_dictionary = [];
 
 console.log('Piping movie sheet into fuse dictionary...');
-fs.createReadStream('moviemap2.csv')
+fs.createReadStream('moviemap3.csv')
     .pipe(csv())
     .on('data', function(data) {
         var entry = data.Movie;
@@ -84,7 +84,7 @@ app.post('/match/', function(req, res){
     console.log('No confident match.');
     res.send(JSON.stringify('NOTHING'));
   }
-})
+});
 
 app.listen(port, function(){
     console.log("Server running on port " + port + "...");
