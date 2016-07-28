@@ -32,8 +32,8 @@ fs.createReadStream('moviemap3.csv')
 
 var fuse = new Fuse(movie_dictionary, { include: ['score', 'matches'],
                                         threshold: 0.6,
-                                        maxPatternLength: 50,
-                                        verbose: false });
+                                        // maxPatternLength: 50,
+                                        verbose: true });
 
 function fuzzyMatch(title) {
   //handle special chars
@@ -80,7 +80,7 @@ app.post('/match/', function(req, res){
   var match = fuzzyMatch(title);
   console.log(JSON.stringify(match));
   // console.log('matched: \"' + title + '\" with ' + movie_dictionary[match] + '!');
-  if ((match !== undefined) && (match.score < 0.43)) {
+  if ((match !== undefined) && (match.score < 0.33)) {
     console.log('MATCHED: \"' + title + '\" with ' + movie_dictionary[match.item] + '!');
     res.send(JSON.stringify(movie_dictionary[match.item]));
   } else {
