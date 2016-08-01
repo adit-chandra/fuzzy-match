@@ -1,3 +1,10 @@
+// keep heroku awake
+var http = require("http");
+setInterval(function() {
+    http.get("http://fuzzy-match-and-chill.herokuapp.com/");
+}, 300000); // every 5 minutes (300000)
+
+
 var express = require('express');
 var request = require('request');
 var bodyParser = require('body-parser');
