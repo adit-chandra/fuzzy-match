@@ -88,11 +88,28 @@ app.post('/match/', function(req, res){
   console.log('match call');
   var title = req.body.title;
   var match = fuzzyMatch(title);
+  var fuzzy_title = movie_dictionary[match.item] + '';
+  var fuzzy_tokens = fuzzy_title.split(' ');
+  var title_tokens = title.split(' ');
+  var numerical_token_match = true;
+
+  if(fuzzy_tokens.length != title_tokens.length){
+    numerical_token_match = false;
+  } else {
+    for(var i = 0; (i < fuzzy_tokens.length) && (i < title_tokens.length); i++) {
+        console.log(parseInt(fuzzy_tokens[i]));
+        console.log(parseInt(title_tokens[i]));
+      if((parseInt(title_tokens[i]) > 0 && (!(parseInt(fuzzy_tokens[i]) > 0))) || (parseInt(fuzzy_tokens[i]) > 0 && (!(parseInt(title_tokens[i]) > 0)))){
+        numerical_token_match = false;
+        break;
+      }
+    }
+  }
+
   console.log(JSON.stringify(match));
-  // console.log('matched: \"' + title + '\" with ' + movie_dictionary[match] + '!');
-  if ((match !== undefined) && (((title.length >= 7) && (match.score < 0.33)) || ((title.length < 7) && match.score < 0.17))) {
-    console.log('MATCHED: \"' + title + '\" with ' + movie_dictionary[match.item] + '!');
-    res.send(JSON.stringify(movie_dictionary[match.item]));
+  if (((match !== undefined) && numerical_token_match) && (((title.length >= 7) && (match.score < 0.3)) || ((title.length < 7) && match.score < 0.17))) {
+    console.log('MATCHED: \"' + title + '\" with ' + fuzzy_title + '!');
+    res.send(JSON.stringify(fuzzy_title));
   } else {
     console.log('No confident match.');
     res.send(JSON.stringify('NOTHING'));
