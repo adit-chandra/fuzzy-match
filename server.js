@@ -1,10 +1,3 @@
-// keep heroku awake
-var http = require("http");
-setInterval(function() {
-    http.get("http://fuzzy-match-and-chill.herokuapp.com/");
-}, 300000); // every 5 minutes (300000)
-
-
 var express = require('express');
 var request = require('request');
 var bodyParser = require('body-parser');
@@ -12,23 +5,23 @@ const csv = require('csv-parser');
 const fs = require('fs');
 const Fuse = require('fuse.js');
 
-var movie_dictionary = [];
+var word_dictionary = [];
 
-console.log('Piping movie sheet into fuse dictionary...');
-fs.createReadStream('moviemap3.csv')
+console.log('Piping word sheet into fuse dictionary...');
+fs.createReadStream('wordmap3.csv')
     .pipe(csv())
     .on('data', function(data) {
-        var entry = data.Movie;
+        var entry = data.word;
         // entry = entry.replace(/[!@#$%^&*'":;,\s+]/g, "");
-        movie_dictionary.push(entry);
-        // console.log('adding: ' + data.Movie);
+        word_dictionary.push(entry);
+        // console.log('adding: ' + data.word);
     })
     .on('end', function(){
-      console.log(movie_dictionary[98]);
+      console.log(word_dictionary[98]);
 
         console.log('Done! Outputting verbose. Listening...');
-        // console.log(movie_dictionary);
-        // console.log(movie_dictionary[592]);
+        // console.log(word_dictionary);
+        // console.log(word_dictionary[592]);
     });
 
 // fuse tuning
@@ -39,7 +32,7 @@ fs.createReadStream('moviemap3.csv')
 //               verbose: true
 //             };
 
-var fuse = new Fuse(movie_dictionary, { include: ['score', 'matches'],
+var fuse = new Fuse(word_dictionary, { include: ['score', 'matches'],
                                         threshold: 0.35,
                                         // maxPatternLength: 50,
                                         // tokenize: true,
@@ -88,7 +81,7 @@ app.post('/match/', function(req, res){
   console.log('match call');
   var title = req.body.title;
   var match = fuzzyMatch(title);
-  var fuzzy_title = movie_dictionary[match.item] + '';
+  var fuzzy_title = word_dictionary[match.item] + '';
   var fuzzy_tokens = fuzzy_title.split(' ');
   var title_tokens = title.split(' ');
   var numerical_token_match = true;
