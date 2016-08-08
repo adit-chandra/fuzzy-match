@@ -1,6 +1,6 @@
-# Movie Title Fuzzy Matcher#
+# Fuzzy Matcher#
 
-Implements fuse.js library to fuzzy match queries confidently to real movie titles. If no confident match found, output indicates as such.
+Implements fuse.js library to fuzzy match queries confidently to a dictionary. If no confident match found, output indicates as such.
 
 ### Usage ###
 
