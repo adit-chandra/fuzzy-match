@@ -1,6 +1,6 @@
 {
-  "name": "Fuzzy-Movie-Match",
-  "description": "Fuzzy Match Movie Titles",
+  "name": "Fuzzy--Match",
+  "description": "Fuzzy Match",
   "version": "0.0.1",
   "main": "server.js",
   "scripts": {
